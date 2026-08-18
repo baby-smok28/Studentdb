@@ -1,14 +1,15 @@
-const service = require('../services/etudiant.service');
+const service = require('../service/etudiant.service');
 
-exports.getAll = async (req, res, next) => {
+async function getAll(req, res, next) {
     try {
-        res.status(200).json(await service.listerEtudiants());
+        const etudiants = await service.listerEtudiants();
+        res.status(200).json(etudiants);
     } catch (err) {
         next(err);
     }
-};
+}
 
-exports.getOne = async (req, res, next) => {
+async function getOne(req, res, next) {
     try {
         const etudiant = await service.obtenirEtudiant(Number(req.params.id));
         if (!etudiant) return res.status(404).json({ message: 'Non trouvé' });
@@ -16,28 +17,28 @@ exports.getOne = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-};
+}
 
-exports.create = async (req, res, next) => {
+async function create(req, res, next) {
     try {
         const nouveau = await service.creerEtudiant(req.body);
         res.status(201).json(nouveau);
     } catch (err) {
         next(err);
     }
-};
+}
 
-exports.update = async (req, res, next) => {
+async function update(req, res, next) {
     try {
-        const updated = await service.modifierEtudiant(Number(req.params.id), req.body);
-        if (!updated) return res.status(404).json({ message: 'Non trouvé' });
-        res.status(200).json(updated);
+        const etudiant = await service.modifierEtudiant(Number(req.params.id), req.body);
+        if (!etudiant) return res.status(404).json({ message: 'Non trouvé' });
+        res.status(200).json(etudiant);
     } catch (err) {
         next(err);
     }
-};
+}
 
-exports.remove = async (req, res, next) => {
+async function remove(req, res, next) {
     try {
         const ok = await service.supprimerEtudiant(Number(req.params.id));
         if (!ok) return res.status(404).json({ message: 'Non trouvé' });
@@ -45,12 +46,15 @@ exports.remove = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-};
+}
 
-exports.stats = async (req, res, next) => {
+async function stats(req, res, next) {
     try {
-        res.status(200).json(await service.obtenirStatistiques());
+        const result = await service.obtenirStatistiques();
+        res.status(200).json(result);
     } catch (err) {
         next(err);
     }
-};
+}
+
+module.exports = { getAll, getOne, create, update, remove, stats };

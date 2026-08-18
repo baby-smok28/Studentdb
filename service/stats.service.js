@@ -1,3 +1,5 @@
-exports.statistiques = (etudiants) => ({
-    total: etudiants.length,
-});
+function statistiques(etudiants) {
+    return { total: etudiants.length };
+}
+
+module.exports = { statistiques };
