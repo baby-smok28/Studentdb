@@ -1,15 +1,29 @@
 const Etudiant = require('../models/etudiant.model');
-exports.findAll = () => Etudiant.findAll();
-exports.findById = (id) => Etudiant.findByPk(id);
-exports.create = (data) => Etudiant.create(data);
-exports.update = async (id, data) => {
+
+async function findAll() {
+    return await Etudiant.findAll();
+}
+
+async function findById(id) {
+    return await Etudiant.findByPk(id);
+}
+
+async function create(data) {
+    return await Etudiant.create(data);
+}
+
+async function update(id, data) {
     const etudiant = await Etudiant.findByPk(id);
     if (!etudiant) return null;
-    return etudiant.update(data);
-};
-exports.remove = async (id) => {
+    await etudiant.update(data);
+    return etudiant;
+}
+
+async function remove(id) {
     const etudiant = await Etudiant.findByPk(id);
     if (!etudiant) return false;
     await etudiant.destroy();
     return true;
-};
+}
+
+module.exports = { findAll, findById, create, update, remove };

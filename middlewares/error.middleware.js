@@ -1,4 +1,7 @@
-module.exports = (err, req, res, next) => {
+function errorHandler(err, req, res, next) {
     const status = err.status || 500;
-    res.status(status).json({ message: err.message || 'Erreur serveur' });
-};
+    const message = err.message || 'Erreur serveur';
+    res.status(status).json({ message: message });
+}
+
+module.exports = errorHandler;

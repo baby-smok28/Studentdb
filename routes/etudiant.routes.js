@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const c = require('../controllers/etudiant.controller');
+const etudiantController = require('../controllers/etudiant.controller');
 const auth = require('../middlewares/auth.middleware');
 
-router.get('/etudiants/stats', auth, c.stats);
-router.get('/etudiants', auth, c.getAll);
-router.get('/etudiants/:id', auth, c.getOne);
-router.post('/etudiants', auth, c.create);
-router.put('/etudiants/:id', auth, c.update);
-router.delete('/etudiants/:id', auth, c.remove);
+router.get('/etudiants/stats', auth, etudiantController.stats);
+router.get('/etudiants', auth, etudiantController.getAll);
+router.get('/etudiants/:id', auth, etudiantController.getOne);
+router.post('/etudiants', auth, etudiantController.create);
+router.put('/etudiants/:id', auth, etudiantController.update);
+router.delete('/etudiants/:id', auth, etudiantController.remove);
 
 module.exports = router;
