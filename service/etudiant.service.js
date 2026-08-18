@@ -11,12 +11,16 @@ exports.listerEtudiants = () => repo.findAll();
 exports.obtenirEtudiant = (id) => repo.findById(id);
 exports.modifierEtudiant = async (id, data) => {
     if (data.email && !validerEmail(data.email)) {
-    throw { status: 400, message: 'Email invalide' };
-}
+        throw { status: 400, message: 'Email invalide' };
+    }
+    return repo.update(id, data);
 };
-return repo.update(id, data);
 exports.supprimerEtudiant = (id) => repo.remove(id);
 exports.obtenirStatistiques = async () => {
     const etudiants = await repo.findAll();
-    return statistiques(etudiants);
+    
+    
+    
+    
+     return statistiques(etudiants);
 };
