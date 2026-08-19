@@ -1,0 +1,126 @@
+{
+	"info": {
+		"name": "API Etudiants",
+		"description": "CRUD Etudiants avec JWT"
+	},
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE3ODcwNzcxMzcsImV4cCI6MTc4NzA4MDczN30.fLbolDHkZB9wRCN2iblR8dKje_pfbDRDyfNEF5EM5i4",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test\"}"
+				},
+				"url": "http://localhost:3000/login"
+			}
+		},
+		{
+			"name": "Lister etudiants",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "http://localhost:3000/etudiants"
+			}
+		},
+		{
+			"name": "Obtenir etudiant",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "http://localhost:3000/etudiants/1"
+			}
+		},
+		{
+			"name": "Creer etudiant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nom\":\"Nouvel Etudiant\",\"email\":\"nouveau@example.com\"}"
+				},
+				"url": "http://localhost:3000/etudiants"
+			}
+		},
+		{
+			"name": "Modifier etudiant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nom\":\"Nom Modifie\",\"email\":\"modifie@example.com\"}"
+				},
+				"url": "http://localhost:3000/etudiants/1"
+			}
+		},
+		{
+			"name": "Supprimer etudiant",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "http://localhost:3000/etudiants/9"
+			}
+		},
+		{
+			"name": "Stats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "http://localhost:3000/etudiants/stats"
+			}
+		}
+	]
+}

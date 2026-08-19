@@ -2,14 +2,15 @@
   "name": "hello-world",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
+    "dev": "nodemon --exec tsx app.ts",
+    "start": "tsx app.ts",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
@@ -19,6 +20,12 @@
     "sequelize": "^6.37.8"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.2.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
   }
 }
