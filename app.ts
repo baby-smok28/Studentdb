@@ -1,9 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const sequelize = require('./config/database');
-const etudiantRoutes = require('./routes/etudiant.routes');
-const authRoutes = require('./routes/auth.routes');
-const errorHandler = require('./middlewares/error.middleware');
+import 'dotenv/config';
+import express from 'express';
+import sequelize from './config/Database.js';
+import etudiantRoutes from './routes/EtudiantRoutes.js';
+import authRoutes from './routes/AuthRoutes.js';
+import errorHandler from './middlewares/ErrorMiddleware.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
