@@ -1,0 +1,1 @@
+> Note : Lors des premiers développements, j'ai directement poussé les commits sur la branche `master`. J'ai depuis corrigé cette organisation en créant la branche `develop` qui est désormais la branche de travail principale. Je m'excuse pour ce désordre initial et je m'engage à suivre une meilleure pratique de branching à l'avenir.
